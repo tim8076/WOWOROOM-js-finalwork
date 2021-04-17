@@ -1352,6 +1352,21 @@ button--dark:hover, .button--dark:hover {
   margin-bottom: 1rem;
 }
 
+@media (max-width: 768px) {
+  .chart__select {
+    width: 30%;
+    margin-right: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .chart__select {
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+  }
+}
+
 .orders-table {
   padding-bottom: 10.8rem;
 }

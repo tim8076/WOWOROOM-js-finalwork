@@ -35,7 +35,6 @@ const orderListTitle = document.querySelector('.order-list__title');
 function getOrderList() {
     axios.get(orderUrl, orderHeader)
         .then(res => {
-            console.log(res);
             ordersData = res.data.orders;
             renderOrders();
             renderC3("全產品類別營收比重");
