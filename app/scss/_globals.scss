@@ -1,0 +1,141 @@
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-size: $fs-base;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: $fw-normal;
+    color: $color-dark;
+    line-height: 1.4;
+}
+
+a{
+    color: $color-dark;
+    transition: color 250ms ease-in-out;
+    &:hover{
+        color: $color-primary;
+    }
+}
+
+.container{
+   max-width: $container-width;
+   margin: 0 auto;
+   
+   &--px{
+      @include desktop-below{
+          padding-left: 2rem;
+          padding-right: 2rem;
+      }
+   }
+}
+.loading{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display:none;
+    &.active{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255,255,255,.3);
+    }  
+}
+
+//h1
+.main-title{
+   font-size: $fs-h1;
+}
+// h2
+.sub-title{
+    font-size: $fs-h2;
+    margin-bottom: 3.2rem;
+    text-align: center;
+}
+// h3
+.title{
+    font-size: $fs-h3;
+}
+
+
+
+//元件
+button,.button{
+    font-size: 2rem;
+    background: transparent;
+    border: 1px solid $color-dark;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 300ms ease-in-out;
+    display: inline-block;
+    &:hover{
+        background-color: $color-dark;
+        color: $color-light;
+    }
+    &--sm{
+        font-size: 1.2rem;  
+    }
+    &--lg{
+        padding: 1rem  6.8rem;
+    }
+    &--noRound{
+        border-radius: 0px;
+    }
+    &--alert{
+        background-color: $color-alert;
+        color: $color-light;
+        &:hover{
+            background-color: darken($color-alert,15%) ;
+        }
+    }
+    &--dark{
+        background-color:$color-dark;
+        color: $color-light;
+        &:hover{
+            background-color: $color-primary-dark;
+        }
+    }
+}
+.select{
+    color: $color-gray;
+    padding: 0.8rem 1.2rem;
+    border: 1px solid #CED4DA;
+    border-radius: 4px;
+}
+
+
+
+// helper class
+.bg-cover{
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.overflowY-hidden{
+    overflow-y: hidden;
+}
+
+.hide-for-mobile{
+    @include phone{
+        display: none;
+    }
+}
+.hide-for-desktop{
+    @include pad-up{
+        display: none;
+    }
+}
+
+.negative-px{
+    @include phone{
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+
