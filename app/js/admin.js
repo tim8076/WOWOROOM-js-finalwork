@@ -27,8 +27,6 @@ const orderListTable = document.querySelector('.order-list tbody');
 const orderListTotal = document.querySelector('.order-list .order-total');
 const orderListTitle = document.querySelector('.order-list__title');
 
-
-
 //function
 
 //取得訂單列表

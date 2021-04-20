@@ -10,6 +10,7 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.css'
         integrity='sha512-3icgkoIO5qm2D4bGSUkPqeQ96LS8+ukJC7Eqhl1H5B2OJMEnFqLmNDxXVmtV/eq5M65tTDkUYS/Q0P4gvZv+yA=='
         crossorigin='anonymous' />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="../../dist/style/style.min.css">
 </head>
 <body>
@@ -38,7 +39,7 @@
         </div>
     </header>
 
-    <section class="features">
+    <section class="features" >
         <div class="container container--px negative-px">
             <div class="features__main bg-cover" style="background-image: url('../../image/photo-index.png');">
                 <h1 class="main-title">
@@ -49,7 +50,7 @@
             <h2 class="sub-title">
                 床墊優勢
             </h2>
-            <ul class="features__items">
+            <ul class="features__items" data-aos="fade-up" data-aos-duration="1500">
                 <li class="features__item">
                     <a href="#" class="features__image">
                        <img src="../../image/photo-feature-1.png" alt="feature-image-1">
@@ -78,10 +79,10 @@
         </div>
     </section>
 
-    <section class="comparison">
-        <div class="container container--px">
+    <section class="comparison" >
+        <div class="container container--px" >
             <h2 class="sub-title">家具比較</h2>
-            <div class="table-container">
+            <div class="table-container" data-aos="fade-up" data-aos-duration="2000">
                 <table class="comparison__table">
                     <thead>
                         <tr>
@@ -142,7 +143,7 @@
 
     <section class="recommend">
         <h2 class="sub-title">好評推薦</h2>
-        <div class="container container--px">
+        <div class="container container--px" data-aos="fade-up" data-aos-duration="1500">
             <ul class="recommend__cards">
                 <li class="recommend__card">
                     <img src="../../image/photo-recommend-1.png" alt="photo-recommend-1">
@@ -280,9 +281,9 @@
     </section>
 
     <section class="shipping">
-         <div class="container conatainer--px">
+         <div class="container conatainer--px" >
             <h2 class="sub-title">運送方式</h2>
-            <ul class="shipping__process">
+            <ul class="shipping__process" data-aos="fade-up" data-aos-duration="1500">
                 <li class="shipping__process__item">
                     <div class="icon">
                         <i class="fas fa-shopping-cart"></i>
@@ -448,7 +449,12 @@
                     </li>
                 </template>
             </ul>
-            <div class="customerService__input">         
+            <div class="customerService__input">  
+                <span class="emoji-area">
+                    <i class="fas fa-smile-wink"></i>
+                    <div class="emojies">
+                    </div>
+                </span>       
                 <input type="search" class="customerService__input__search" placeholder="請輸入您的問題">
                 <label>
                     <i class="fas fa-share"></i>
@@ -491,7 +497,7 @@
     integrity='sha512-otOZr2EcknK9a5aa3BbMR9XOjYKtxxscwyRHN6zmdXuRfJ5uApkHB7cz1laWk2g8RKLzV9qv/fl3RPwfCuoxHQ=='
     crossorigin='anonymous'></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
-
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="../js/all.js"></script>
 <script src="../js/utli.js"></script>
     

@@ -34,6 +34,8 @@ const customerSendButton = document.querySelector('.customerService__input .fa-s
 const customerResponse = document.querySelector('.customerService__questions__responses');
 const customerResponseTemplate = document.querySelector('[data-customer-response]');
 const customerCommonQuestions = document.querySelectorAll('.customerService__questions__list a');
+const emojiButton = document.querySelector('.emoji-area');
+const emojiesArea = document.querySelector('.emojies');
 
 //data
 let productData = [];
@@ -380,6 +382,7 @@ function createOrder(orderInfo){
 function init(){
     getProductList();
     getCartList();
+    AOS.init();
 }
 init();
 
@@ -424,8 +427,41 @@ function createResponse(responseObj){
     customerResponse.scrollTo(0, customerResponse.scrollHeight);
 }
 
+function addEmojii(){
+    let moods = emojiArray(128512, 128516).concat(emojiArray(128525, 128529))
+        .concat(emojiArray(128531, 128535)).concat(emojiArray(128541, 128545));
 
+    let foods = emojiArray(127828, 127830).concat(emojiArray(127837, 127839))
+        .concat(emojiArray(127854, 127857));
 
+    let animals = emojiArray(128045, 128059);
+
+    let ary = [...moods, ...foods, ...animals];
+    let str = '';
+    ary.forEach(item=>{
+        str += `<span class="emojii" data-dec="${item}">&#${item}</span>`
+    })
+    emojiesArea.innerHTML = str;
+}
+
+function sendEmojii(e){
+    if (e.target.classList.contains('emojii')){
+        let dec = parseInt(e.target.dataset.dec.trim());
+        const responseObj = {
+            question: String.fromCodePoint(dec),
+            response: "WOWOROOM 期待您的光臨"
+        }
+        createResponse(responseObj);
+    }
+}
+
+function emojiArray(low,high){
+    const array = [];
+    for(let i=low;i<=high;i++){
+        array.push(i);
+    }
+    return array;
+}
 
 // events listen
 productSelect.addEventListener('change',selectProduct);
@@ -465,3 +501,9 @@ customerCommonQuestions.forEach(item=>{
         createResponse(responseObj);
     })
 })
+emojiButton.addEventListener('click',addEmojii,{once:true});
+emojiButton.addEventListener('click', function(e){
+    e.stopPropagation();
+    emojiesArea.classList.toggle('active');
+});
+emojiesArea.addEventListener('click',sendEmojii);

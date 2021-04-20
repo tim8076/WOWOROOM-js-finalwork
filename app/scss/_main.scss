@@ -626,6 +626,39 @@
     &__input{
         display: flex;
         align-items: center;
+        .emoji-area{
+            font-size: 2.5rem;
+            margin-right: 0.25em;
+            color: rgb(236, 164, 9);
+            cursor: pointer;
+            position: relative;
+        }
+        .emojies{
+            padding: 1rem;
+            position: absolute;
+            bottom: 4rem;
+            left: -10rem;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            width: 25rem;
+            background-color: rgb(195, 158, 255);
+            padding: 1rem;
+            cursor: default;
+            border-radius: 20px;
+            border: 3px solid $color-primary-dark;
+            display: none;
+            &.active{
+                display: block;
+            }
+            .emojii{
+                margin: 0.5em 0.2em;
+                cursor: pointer;
+                &:hover{
+                   box-shadow: 0px 0px 5px #5434A7;
+                }
+            }
+        }
         &__search{
             flex-grow: 1;
             padding: 0.5em 1em;
