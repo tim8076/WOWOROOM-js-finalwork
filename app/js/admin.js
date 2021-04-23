@@ -156,14 +156,30 @@ function deleteOrder(id) {
             renderOrders();
             renderC3("全產品類別營收比重");
             removeLoading();
+            alertPop({
+                success: true,
+                alert: '刪除訂單成功'
+            });
         })
         .catch(err => {
             console.log(err);
             removeLoading();
+            alertPop({
+                success: false,
+                alert: '刪除訂單失敗'
+            });
         })
 }
 // 刪除全部訂單
 function deleteAllOrders() {
+    if (ordersData.length === 0){
+        let text = {
+            title: "後台無訂單",
+            alert: "請再確認"
+        }
+        modalPop(text);
+        return;
+    }
     axios.delete(orderUrl, orderHeader)
         .then(res => {
             ordersData = res.data.orders;
@@ -191,10 +207,18 @@ function modifyOrderStatus(id, paid) {
             ordersData = res.data.orders;
             renderOrders();
             removeLoading();
+            alertPop({
+                success: true,
+                alert: '已修改訂單狀態'
+            });
         })
         .catch(err => {
             console.log(err);
             removeLoading();
+            alertPop({
+                success: true,
+                alert: '修改訂單狀態失敗'
+            });
         })
 }
 

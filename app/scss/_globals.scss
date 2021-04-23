@@ -44,6 +44,37 @@ a{
         background-color: rgba(255,255,255,.3);
     }  
 }
+.alert{
+    position: fixed;
+    top: 3rem;
+    right: 6rem;
+    width: 24rem;
+    height: 6rem;
+    border-radius: 5rem ;
+    color: $color-light;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(50%);
+    transition: all .8s ease-in-out ;
+    &.active{
+        opacity: 1;
+        transform: translateY(0);
+        &.success{
+            background-color: #9D7FEA;
+        }
+        &.fail{
+            background-color: $color-alert;
+        }
+    }
+    .fa-check-circle{
+        margin-right: 0.3em;
+    }
+}
+
+
 
 //h1
 .main-title{

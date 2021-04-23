@@ -8,6 +8,8 @@ const orderApi = `https://hexschoollivejs.herokuapp.com/api/livejs/v1/customer/$
 
 
 //dom 
+const recommendScroll = document.querySelector('.recommend .container');
+
 const productList = document.querySelector('.merchandise__items');
 const productSelect = document.querySelector('.merchandise__select');
 
@@ -58,6 +60,10 @@ const constraints ={
         format: {
             pattern: "^[0-9]{10}$",
             message: "不是正確的格式"
+        },
+        length:{
+            minimum: 9,
+            message: "號碼過少"
         }
     },
     Email:{
@@ -227,10 +233,18 @@ function postProduct(id,num){
         setCartData(res);
         renderCartList();
         removeLoading();
+        alertPop({
+            success: true,
+            alert: '成功加入購物車'
+        });
     })
     .catch(err=>{
         console.log(err);     
         removeLoading();
+        alertPop({
+            success: false,
+            alert: '加入購物車失敗'
+        });
     })    
 }
 
@@ -262,10 +276,18 @@ function deleteCartItem(id){
              setCartData(res);
              renderCartList();
              removeLoading();
+             alertPop({
+                 success: true,
+                 alert: '成功刪除商品'
+             });
          })
          .catch(err=>{
              console.log(err);   
              removeLoading();
+             alertPop({
+                 success: false,
+                 alert: '刪除商品失敗'
+             });
          })
 }
 
@@ -301,10 +323,18 @@ function changeItemNum(e){
             setCartData(res);
             renderCartList();
             removeLoading();
+            alertPop({
+                success: true,
+                alert: '已修改商品數量'
+            });
         })
         .catch(err=>{
             console.log(err);
             removeLoading();
+            alertPop({
+                success: true,
+                alert: '修改數量失敗'
+            });
         })
     }
 }
@@ -386,6 +416,30 @@ function init(){
 }
 init();
 
+
+// 推薦區卷軸拖曳
+let startX = 0;
+function startDrag(e){
+    recommendScroll.classList.add('active');
+    recommendScroll.style.cursor = 'grabbing';
+    startX = e.pageX;
+
+}
+function dragHandler(e) {
+    if (recommendScroll.classList.contains('active')){
+        let move = e.pageX - startX; 
+        recommendScroll.scrollLeft -= move;
+        recommendScroll.querySelectorAll('img,h4,p').forEach(img=>{
+            img.setAttribute('draggable', false);
+            img.style.userSelect = 'none';
+        })
+        startX = e.pageX;
+    }
+}
+function stopDrap(e){
+    recommendScroll.classList.remove('active');
+    recommendScroll.style.cursor = 'grab';
+}
 
 //跑馬燈文字設置
 function setMarquee(){
@@ -471,6 +525,14 @@ cartTableContainer.addEventListener('click', deleteCart);
 cartTableContainer.addEventListener('change',changeItemNum);
 sendOrderButton.addEventListener('click',sendOrder);
 
+
+// 推薦區卷軸拖曳
+recommendScroll.addEventListener('mousedown', startDrag);
+recommendScroll.addEventListener('mousemove', dragHandler);
+recommendScroll.addEventListener('mouseup', stopDrap);
+recommendScroll.addEventListener('mouseleave', stopDrap);
+
+
 //客服開關
 customerService.addEventListener('click',function(e){
     if (e.target.classList.contains('customerService') ||
@@ -501,6 +563,7 @@ customerCommonQuestions.forEach(item=>{
         createResponse(responseObj);
     })
 })
+
 emojiButton.addEventListener('click',addEmojii,{once:true});
 emojiButton.addEventListener('click', function(e){
     e.stopPropagation();
